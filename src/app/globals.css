@@ -1,0 +1,251 @@
+@import "tailwindcss";
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 245, 230, 216; /* warm beige */
+  --background-end-rgb: 252, 245, 239; /* lighter warm beige */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+  overflow-x: hidden;
+}
+
+/* Font sınıfları - CSS değişkenleri kullanıyor */
+.font-playfair {
+  font-family: var(--font-playfair);
+}
+
+.font-poppins {
+  font-family: var(--font-poppins);
+}
+
+/* Özel renk tanımlamaları */
+.bg-warm-beige {
+  background-color: #f5e6d8;
+}
+
+.text-warm-brown {
+  color: #8a6d5d;
+}
+
+/* Premium animasyonlar */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes scroll-down {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}
+
+.animate-scroll-down {
+  animation: scroll-down 2s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 5s ease-in-out infinite;
+}
+
+/* Özel glow efekti */
+.glow-effect {
+  box-shadow: 0 0 40px rgba(219, 178, 178, 0.2);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 40px rgba(219, 178, 178, 0.4);
+  transition: box-shadow 0.5s ease-in-out;
+}
+
+.animated-shape {
+  position: absolute;
+  inset: 0;
+}
+
+.animated-shape::before {
+  content: "";
+  position: absolute;
+  left: 25%;
+  top: 15%;
+  width: 600px;
+  height: 600px;
+  border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
+  will-change: border-radius, transform, opacity;
+  animation: shapeAnimation 20s linear infinite;
+  display: block;
+  z-index: 0;
+  background: rgba(245, 230, 216, 0.3); /* warm-beige ile uyumlu */
+}
+
+@keyframes shapeAnimation {
+  0%,
+  100% {
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    transform: translate3d(0, 0, 0) rotateZ(0.01deg);
+  }
+  34% {
+    border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+    transform: translate3d(0, 5px, 0) rotateZ(0.01deg);
+  }
+  50% {
+    transform: translate3d(0, 0, 0) rotateZ(0.01deg);
+  }
+  67% {
+    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+    transform: translate3d(0, -3px, 0) rotateZ(0.01deg);
+  }
+}
+
+/* İkinci shape için (opsiyonel) */
+.animated-shape::after {
+  content: "";
+  position: absolute;
+  right: 25%;
+  bottom: 15%;
+  width: 400px;
+  height: 400px;
+  background: rgba(138, 109, 93, 0.1); /* warm-brown ile uyumlu */
+  border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
+  will-change: border-radius, transform, opacity;
+  animation: shapeAnimation 15s linear infinite;
+  animation-delay: -7s;
+  display: block;
+  z-index: 0;
+}
+
+/* app/globals.css dosyasına eklenecek stiller */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
+
+/* Kart hover efektleri */
+.card-hover-effect {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Özel arka plan şekli */
+.custom-shape-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 70px;
+}
+
+.custom-shape-divider .shape-fill {
+  fill: #ffffff;
+}
+
+/* Yuvarlak kenar geçişleri */
+.rounded-card-top {
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+}
+
+.rounded-card-bottom {
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+}
+
+/* Soft Gradient Arka Plan */
+.soft-gradient-bg {
+  background: linear-gradient(135deg, #fff5f7, #fff0f0, #fce7f3);
+}
+
+/* Görsel arka plan için yumuşak geçiş */
+.image-overlay-gradient {
+  background: linear-gradient(
+    to right,
+    rgba(255, 225, 225, 0.3),
+    rgba(255, 240, 240, 0)
+  );
+}
+
+/* Görsel zoom efekti */
+.img-zoom-container {
+  overflow: hidden;
+}
+
+.img-zoom {
+  transition: transform 0.6s ease;
+}
+
+.img-zoom:hover {
+  transform: scale(1.05);
+}
